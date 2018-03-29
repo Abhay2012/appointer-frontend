@@ -1,0 +1,26 @@
+<div class="back">
+    <div style="text-align:  center;">
+        <span class="glyphicon glyphicon-user" style="font-size:80px;color:white;top:20px;border-radius:50%;border:1px solid white;padding:25px;"></span>
+    </div>
+    <br> <br>
+    <h2 style="color:white;margin-bottom:5px;margin-left:15px">Personal Information</h2>
+    <hr style="color:white;margin-left:15px" class="style-one">
+    <div style="margin-left:25px">
+        <span style="color:white;    font-size: 20px;" class="glyphicon glyphicon-user"></span> <span style="    font-size: 20px;color:white;margin-left:15px">{{local.name}}</span><br>
+        <span style="color:white;    font-size: 20px;" class="glyphicon glyphicon-envelope"></span> <span style="color:white;    font-size: 20px;margin-left:15px ">{{local.email}}</span><br>
+        <span style="color:white;     font-size: 20px;" class="glyphicon glyphicon-earphone"></span> <span style="color:white; margin-left:15px;    font-size: 20px;">{{local.phone}}</span>
+    </div>
+    <br><br>
+    <h2 style="color:white;margin-bottom:5px;margin-left:15px">Services</h2>
+    <hr style="color:white;margin-left:15px" class="style-one">
+<div>
+    <div class="card border-light" *ngFor="let service of services" style="margin:10px">
+        <div class="card-header">{{service.title}}</div>
+        <div class="card-body">
+          <!-- <h5 class="card-title">Light card title</h5> -->
+          <p class="card-text">{{service.description}}</p>
+        </div>
+      </div>
+</div>
+
+</div>
