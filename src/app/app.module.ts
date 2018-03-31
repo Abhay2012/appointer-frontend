@@ -14,12 +14,21 @@ export class MyHammerConfig extends HammerGestureConfig {
   imports: [BrowserModule,
     RouterModule.forRoot([
       {
+        path : "",
+        redirectTo : 'home',
+        pathMatch : 'full'
+      },
+      {
         path : "login",
         loadChildren : 'app/components/login-signup/login-signup.module#LoginSignUpModule'
       },
       {
         path : "profile",
         loadChildren : 'app/components/profile/profile.module#ProfileModule'
+      },
+      {
+        path : "home",
+        loadChildren : 'app/components/home/home.module#HomeModule'
       }
     ])
   ],
