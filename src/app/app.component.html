@@ -1,9 +1,5 @@
 <div class="container">
-  <div id="sidebar" [class.open-sidebar]="open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')" >
-    <div style="background-color:#09203f">
-
-    </div>
-  </div>
+  <side-bar [open]="open"></side-bar>
   <div class="main-content">
     <div class="swipe-area" [class.swipe-area-open]="open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')"></div>
     <div style="background:linear-gradient(to bottom , #09203f, #1d4a6d  )">

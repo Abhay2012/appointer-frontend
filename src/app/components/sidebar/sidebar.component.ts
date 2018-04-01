@@ -1,19 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
-    // moduleId: module.id,
-    selector: 'app-root',
-    templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css']
-    // providers : [ Router ]
+    selector : 'side-bar',
+    templateUrl : 'sidebar.component.html',
+    styleUrls : ['sidebar.component.css']
 })
-export class AppComponent {
-  open: any;
-  constructor(private router : Router){}  
-  SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
+export class SideBarComponent{
+
+    @Input() open : boolean = false;
+
+    constructor(private router : Router){
+
+    }
+    
+    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
     swipe(action) {
-        console.log(this.open);
         console.log("cdscsd");
         if (action === this.SWIPE_ACTION.RIGHT) {
             this.open = true;
@@ -30,5 +32,4 @@ export class AppComponent {
             this.router.navigate(['profile'])
         }
     }
-
 }
