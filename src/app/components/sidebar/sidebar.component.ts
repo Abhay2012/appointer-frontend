@@ -32,4 +32,8 @@ export class SideBarComponent{
             this.router.navigate(['profile'])
         }
     }
+
+    
+        
+    
 }

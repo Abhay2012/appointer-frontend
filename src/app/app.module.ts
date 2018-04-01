@@ -5,6 +5,7 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 import { SideBarModule } from "./components/sidebar/sidebar.module";
 
+
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
     'swipe': { velocity: 0.1, threshold: 1 }
@@ -31,10 +32,15 @@ export class MyHammerConfig extends HammerGestureConfig {
       {
         path : "home",
         loadChildren : 'app/components/home/home.module#HomeModule'
+      },
+{
+        path : "feedback",
+        loadChildren : 'app/components/feedback/feedback.module#FeedbackModule'
       }
+      
     ])
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   bootstrap: [AppComponent],
   providers: [{
     provide: HAMMER_GESTURE_CONFIG,
