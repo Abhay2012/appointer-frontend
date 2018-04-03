@@ -26,6 +26,7 @@
     box-sizing: border-box;
     box-shadow: 6px 1px 20px 0px #62798e;
     -moz-box-sizing: border-box;
+    background-color: white;
 }
 #sidebar ul {
     margin: 0;
@@ -55,7 +56,7 @@ span.list-item-text {
     transition:  background 0.3s ease-in-out;
 }
 #sidebar ul li:hover a {
-    background: #563d7c;
+    /*background: #563d7c;*/
 }
 .main-content {
     width: 100%;
@@ -105,5 +106,14 @@ width: 100%;
     padding : 15px;
     padding-left: 25px;
     font-size : 18px;
-    color : #09203f;
+    color : #09203f !important;
+}
+
+.a1{
+    padding-left: 0px !important; 
+    color: #09203f !important;
+}
+.a1:hover{
+background-color: white !important;
+
 }

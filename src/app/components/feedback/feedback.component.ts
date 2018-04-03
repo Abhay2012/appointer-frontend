@@ -8,8 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class FeedbackComponent{
 	feedbackArr : any[] = [];
   onSubmit = function(object){
-  	this.feedbackArr.push(object);
-  	console.log(this.feedbackArr)
+
+  	this.feedbackArr.push(object.value);
+  	console.log(this.feedbackArr);
+  	object.reset();
+  	
   }
 
 
