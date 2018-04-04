@@ -26,6 +26,7 @@
     box-sizing: border-box;
     box-shadow: 6px 1px 20px 0px #62798e;
     -moz-box-sizing: border-box;
+    background-color: white;
 }
 #sidebar ul {
     margin: 0;
