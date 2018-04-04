@@ -1,10 +1,10 @@
 <div class="container">
-  <side-bar [open]="open"></side-bar>
+  <side-bar [open]="open" #sideBar></side-bar>
   <div class="main-content">
-    <div class="swipe-area" [class.swipe-area-open]="open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')"></div>
+    <div class="swipe-area" [class.swipe-area-open]="sideBar.open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')"></div>
     <div style="background:linear-gradient(to bottom , #09203f, #1d4a6d  )">
       <div style="z-index:2500">
-        <span (click)="open = !open"><i style="color:white;font-size:25px;margin:15px" class="glyphicon glyphicon-align-justify"></i></span> <span style="color:white;vertical-align:super;font-size:20px"> Appointer </span>
+        <span (click)="open = !open"><i style="color:white;font-size:25px;margin:15px" class="fas fa-bars"></i></span> <span style="color:white;position: absolute;top: 13px;font-size:20px"><a routerlink=""> Appointer </a> </span>
         <span class="glyphicon glyphicon-user" (click)="toProfile()" style="color:white;float:right;top:9px;right:9px;border-radius:50%;border:1px solid white;padding:10px;"></span>
       </div>
     </div>

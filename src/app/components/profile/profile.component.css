@@ -1,6 +1,6 @@
 .back{
-    background : linear-gradient( to bottom , #09203f, #1d4a6d);
-    height : 100%;
+    background : linear-gradient( to bottom , #09203f, #1d4a6d, #09203f);
+    min-height : 100%;
     /* text-align:  center; */
   }
 

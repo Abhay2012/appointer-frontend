@@ -1,16 +1,37 @@
 <div id="sidebar" [class.open-sidebar]="open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')">
     <div style="background: linear-gradient(to bottom , #09203f, #1d4a6d );padding:12px;">
-        <div style="padding:12px;text-align:center;">
-            <span style="color:white;vertical-align:super;font-size:20px"> Appointer </span>
+        <div style="padding:0px 12px 12px 12px;text-align:center;">
+            <span style="color:white;vertical-align:super;font-size:20px">Appointer </span>
         </div>
-        <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" src="/assets/user-icon.jpg" >
+        <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" src="/assets/user-icon.jpg">
+        <span style="color:white;vertical-align: top;">{{local.name}}</span>
     </div>
-    <div>
-        <ul class="list-group" style="background-color:white">
+    <div style="height:100%">
+        <ul class="list-group" (click)="open=false;" style="background-color:white;height:100%">
             <li class="sidebar-item">
-                <i class="fas fa-user" style="color:#09203f"></i> <span class="list-item-text"> Profile </span></li>
-            <li class="sidebar-item"> <i class="fas fa-paper-plane" style="color:#09203f"></i> <span class="list-item-text"> Send Feedback</span> </li>
-            <li class="sidebar-item"><i class="fas fa-sign-out-alt" style="color:#09203f"></i> <span class="list-item-text"> Logout</span></li>
+                <a (click)="toProfile()">
+                    <i class="fas fa-user" style="color:#09203f"></i>
+                    <span class="list-item-text"> Profile </span>
+                </a>
+            </li>
+            <li class="sidebar-item" style="bottom:0">
+                <a routerLink="/feedback">
+                    <i class="fas fa-paper-plane" style="color:#09203f"></i>
+                    <span class="list-item-text"> Send Feedback </span>
+                </a>
+            </li>
+            <li class="sidebar-item" style="bottom:0">
+                <a routerLink="/feedback">
+                    <i class="fas fa-question-circle" style="color:#09203f"></i>
+                    <span class="list-item-text"> Privacy Policy </span>
+                </a>
+            </li>
+            <li class="sidebar-item" style="bottom:0">
+                <a routerLink="/feedback">
+                    <i class="fas fa-sign-out-alt" style="color:#09203f"></i>
+                    <span class="list-item-text"> Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
 </div>

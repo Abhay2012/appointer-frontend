@@ -10,13 +10,14 @@ export class SideBarComponent{
 
     @Input() open : boolean = false;
 
+    local : any;
     constructor(private router : Router){
-
+        this.local = localStorage;
     }
     
     SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
     swipe(action) {
-        console.log("cdscsd");
+        console.log("from side bar");
         if (action === this.SWIPE_ACTION.RIGHT) {
             this.open = true;
         }
