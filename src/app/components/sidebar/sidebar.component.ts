@@ -1,5 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
+import { CategoriesList } from "../../modals/lists";
 
 @Component({
     selector : 'side-bar',
@@ -11,6 +12,29 @@ export class SideBarComponent{
     @Input() open : boolean = false;
 
     local : any;
+    showSublist : Boolean = false;
+    subList : CategoriesList[]=[
+        {
+            title : 'Tutors',
+            icon : 'fas fa-user',
+            route : '/'
+        },
+        {
+            title : 'Grocery Shops',
+            icon : 'fas fa-shopping-cart',
+            route : '/'
+        },
+        {
+            title : 'Plumbers',
+            icon : 'fas fa-user',
+            route : '/'
+        },
+        {
+            title : 'Show All',
+            icon : 'fas fa-user',
+            route : '/'
+        }
+    ];
     constructor(private router : Router){
         this.local = localStorage;
     }
@@ -34,6 +58,10 @@ export class SideBarComponent{
         }
     }
 
+    logout(){
+        localStorage.clear();
+        this.router.navigate(['/']);
+    }
     
         
     
