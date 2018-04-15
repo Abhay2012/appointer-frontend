@@ -6,8 +6,8 @@
         <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" src="/assets/user-icon.jpg">
         <span style="color:white;vertical-align: top;">{{local.name}}</span>
     </div>
-    <div style="height:100%">
-        <ul class="list-group" (click)="open=false;" style="background-color:white;height:100%">
+    <div style="height:100%;overflow:auto">
+        <ul class="list-group" (click)="open=false;" style="background-color:white;overflow-y:auto">
             <li class="sidebar-item">
                 <a routerLink="/">
                     <i class="fas fa-home" style="color:#09203f"></i>
@@ -20,8 +20,8 @@
                     <span class="list-item-text"> Profile </span>
                 </a>
             </li>
-            <li (click)="$event.stopPropagation();showSublist = !showSublist " class="sidebar-item">
-                <a (click)="toProfile()">
+            <li class="sidebar-item">
+                <a (click)="fun($event)">
                     <i class="fas fa-sitemap" style="color:#09203f"></i>
                     <span class="list-item-text"> Categories </span>
                     <i class="fas fa-chevron-down" style="float:right;color:#09203f"></i>
@@ -48,7 +48,7 @@
                     <span class="list-item-text"> Privacy Policy </span>
                 </a>
             </li>
-            <li class="sidebar-item" style="bottom:0;position: absolute;">
+            <li class="sidebar-item" >
                 <a (click)="logout()">
                     <i class="fas fa-sign-out-alt" style="color:#09203f"></i>
                     <span class="list-item-text"> Logout</span>

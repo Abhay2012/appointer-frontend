@@ -33,6 +33,21 @@ export class SideBarComponent{
             title : 'Show All',
             icon : 'fas fa-user',
             route : '/'
+        },
+        {
+            title : 'Grocery Shops',
+            icon : 'fas fa-shopping-cart',
+            route : '/'
+        },
+        {
+            title : 'Plumbers',
+            icon : 'fas fa-user',
+            route : '/'
+        },
+        {
+            title : 'Show All',
+            icon : 'fas fa-user',
+            route : '/'
         }
     ];
     constructor(private router : Router){
@@ -63,6 +78,9 @@ export class SideBarComponent{
         this.router.navigate(['/']);
     }
     
-        
+    fun($event){
+        this.showSublist = !this.showSublist;
+        $event.stopPropagation();
+    }   
     
 }
