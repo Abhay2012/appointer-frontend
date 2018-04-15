@@ -4,7 +4,7 @@ import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-br
 import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 import { SideBarModule } from "./components/sidebar/sidebar.module";
-
+import { ChatModule } from './components/chat/chat.module';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -14,6 +14,7 @@ export class MyHammerConfig extends HammerGestureConfig {
 
 @NgModule({
   imports: [BrowserModule,
+  ChatModule,
     SideBarModule,
     RouterModule.forRoot([
       {

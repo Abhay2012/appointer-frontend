@@ -13,6 +13,15 @@
     "test.ts"
   ],
   "include": [
+    "./app/*.ts",
+    "./app/components/*.ts",
+    "./app/components/feedback/*.ts",
+    "./app/components/home/*.ts",
+    "./app/components/login-signup/*.ts",
+    "./app/components/profile/*.ts",
+    "./app/components/sidebar/*.ts",
+    "../node_modules/api-ai-javascript/index.ts",
+    "./main.ts",
     "**/*.spec.ts",
     "**/*.d.ts"
   ]
