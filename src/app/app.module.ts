@@ -37,7 +37,12 @@ export class MyHammerConfig extends HammerGestureConfig {
 {
         path : "feedback",
         loadChildren : 'app/components/feedback/feedback.module#FeedbackModule'
+      },
+      {
+        path : "chat",
+        loadChildren : 'app/components/chat/chat.module#ChatModule'
       }
+
       
     ])
   ],
