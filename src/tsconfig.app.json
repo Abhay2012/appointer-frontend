@@ -12,6 +12,7 @@
     "./app/*.ts",
     "./app/components/*.ts",
     "./app/components/feedback/*.ts",
+    "./app/components/messaging/*.ts",
     "./app/components/home/*.ts",
     "./app/components/login-signup/*.ts",
     "./app/components/profile/*.ts",

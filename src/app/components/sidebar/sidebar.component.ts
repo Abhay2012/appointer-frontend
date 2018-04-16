@@ -78,6 +78,7 @@ export class SideBarComponent{
         this.router.navigate(['/']);
     }
     
+    
     fun($event){
         this.showSublist = !this.showSublist;
         $event.stopPropagation();

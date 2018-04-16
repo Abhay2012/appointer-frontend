@@ -6,7 +6,7 @@
         <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" src="/assets/user-icon.jpg">
         <span style="color:white;vertical-align: top;">{{local.name}}</span>
     </div>
-    <div style="height:100%;overflow:auto">
+    <div style="height:100%;overflow:auto" (swiperight)="swipe('swiperight')" (swipeleft)="swipe('swipeleft')">
         <ul class="list-group" (click)="open=false;" style="background-color:white;overflow-y:auto">
             <li class="sidebar-item">
                 <a routerLink="/">
@@ -18,6 +18,12 @@
                 <a (click)="toProfile()">
                     <i class="fas fa-user" style="color:#09203f"></i>
                     <span class="list-item-text"> Profile </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a routerLink="/messaging">
+                    <i class="fas fa-envelope" style="color:#09203f"></i>
+                    <span class="list-item-text"> Messages </span>
                 </a>
             </li>
             <li class="sidebar-item">

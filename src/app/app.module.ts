@@ -14,34 +14,38 @@ export class MyHammerConfig extends HammerGestureConfig {
 
 @NgModule({
   imports: [BrowserModule,
-  ChatModule,
+    ChatModule,
     SideBarModule,
     RouterModule.forRoot([
       {
-        path : "",
-        redirectTo : 'home',
-        pathMatch : 'full'
+        path: "",
+        redirectTo: 'home',
+        pathMatch: 'full'
       },
       {
-        path : "login",
-        loadChildren : 'app/components/login-signup/login-signup.module#LoginSignUpModule'
+        path: "login",
+        loadChildren: 'app/components/login-signup/login-signup.module#LoginSignUpModule'
       },
       {
-        path : "profile",
-        loadChildren : 'app/components/profile/profile.module#ProfileModule'
+        path: "profile",
+        loadChildren: 'app/components/profile/profile.module#ProfileModule'
       },
       {
-        path : "home",
-        loadChildren : 'app/components/home/home.module#HomeModule'
+        path: "home",
+        loadChildren: 'app/components/home/home.module#HomeModule'
       },
-{
-        path : "feedback",
-        loadChildren : 'app/components/feedback/feedback.module#FeedbackModule'
+      {
+        path: "feedback",
+        loadChildren: 'app/components/feedback/feedback.module#FeedbackModule'
+      },
+      {
+        path: "messaging",
+        loadChildren: 'app/components/messaging/messaging.module#MessagingModule'
       }
-      
+
     ])
   ],
-  declarations: [AppComponent ],
+  declarations: [AppComponent],
   bootstrap: [AppComponent],
   providers: [{
     provide: HAMMER_GESTURE_CONFIG,
