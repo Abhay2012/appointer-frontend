@@ -36,6 +36,7 @@ export class LoginSignUpComponent{
         this.lss.login(this.loginForm).subscribe((res:any)=>{
             console.log(res);
             this.message = res.message;
+            localStorage.setItem('id',res.data._id);
             localStorage.setItem('appointer-token',res.token);
             localStorage.setItem('name',res.data.name);
             localStorage.setItem('email',res.data.email);

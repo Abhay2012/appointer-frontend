@@ -8,17 +8,15 @@ import { RouterModule } from "@angular/router";
 
 @NgModule({
   imports: [
-    CommonModule, 
-    FormsModule, 
+    CommonModule,
+    FormsModule,
     RouterModule.forChild([{
-    	path:"", 
-    	component:ChatDialogComponent
+      path: "",
+      component: ChatDialogComponent
     }
     ])
   ],
   declarations: [ChatDialogComponent],
-  exports : [ChatDialogComponent],
   providers: [ChatService]
 })
 export class ChatModule { }
- 
