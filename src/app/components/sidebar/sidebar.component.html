@@ -9,7 +9,7 @@
     <div style="height:100%;overflow:auto" (swiperight)="swipe('swiperight')" (swipeleft)="swipe('swipeleft')">
         <ul class="list-group" (click)="open=false;" style="background-color:white;overflow-y:auto">
             <li class="sidebar-item">
-                <a routerLink="/">
+                <a routerLink="#">
                     <i class="fas fa-home" style="color:#09203f"></i>
                     <span class="list-item-text"> Home </span>
                 </a>
@@ -49,9 +49,15 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a routerLink="/feedback">
+                <a routerLink="#">
                     <i class="fas fa-question-circle" style="color:#09203f"></i>
                     <span class="list-item-text"> Privacy Policy </span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+                <a routerLink="/chat">
+                    <i class="fas fa-question-circle" style="color:#09203f"></i>
+                    <span class="list-item-text"> Help </span>
                 </a>
             </li>
             <li class="sidebar-item" >

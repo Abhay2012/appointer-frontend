@@ -42,7 +42,12 @@ export class MyHammerConfig extends HammerGestureConfig {
         path: "messaging",
         loadChildren: 'app/components/messaging/messaging.module#MessagingModule'
       }
+      {
+        path : "chat",
+        loadChildren : 'app/components/chat/chat.module#ChatModule'
+      }
 
+      
     ])
   ],
   declarations: [AppComponent],

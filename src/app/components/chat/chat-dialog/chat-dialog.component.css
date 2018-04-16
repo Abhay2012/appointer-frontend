@@ -2,40 +2,33 @@ h1{
 	display:block;
 	margin:0 auto;
 }
-#bot{
-		background-color: white;
-		display:none;
-		width:40%;
-		height:50%;
-		border:2px solid lightblue;
-		z-index:2000;
-		position:fixed;
-		bottom:0;
-		right:0;
-		overflow:auto;
-		border-radius: 10px;
 
-	}
 
 .from{
+	display:all;
 	position: relative;
-	left:0;
+	
 	clear: both;
-	padding:5px;
-	overflow:   auto;
-        bottom:     0;
-        max-height: 400px;
+	padding:15px;
+	overflow:auto;
+        /*bottom:0;*/
+        /*max-height: 400px;*/
+        font-size: 20px;
+        border:2px solid grey;
+        background-color: lightgrey;
 
 	}
 
 	.to{
-		overflow:   auto;
-        bottom:     0;
-        max-height: 400px;
-	position: relative;
+		overflow:auto;
+        /*bottom:0;*/
+    	position: relative;
 	float:right;
-	padding:5px;
+	padding:15px;
 	clear:both;
+	font-size: 20px;
+	border:2px solid blue;
+        background-color: lightblue;
 	}
 
 	.chat{
