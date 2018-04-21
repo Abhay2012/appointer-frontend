@@ -2,7 +2,7 @@
 <!-- <div id="bot">	 -->
 <div id="header">	
 <h1 align="center">
-	Appointer Bot
+	Customer Support
 <!-- <span (click)="hideBot()" class="glyphicon glyphicon-remove" id="close"></span> -->
 
 </h1>
@@ -10,20 +10,28 @@
 
 
 </div>
-
+<div class="chatmsg">
 <ng-container *ngFor="let message of messages | async">
 	<div class="message" [ngClass] = "{'from': message.sentBy === 'bot', 'to': message.sentBy === 'user'}">
 
 	{{ message.content }}
-		
+	<br>
+	<div style="font-size: 15px;">{{ now | date:'shortTime' }}</div>
+		<br>
 	</div>
 	
 	
+	
+	
 </ng-container>
+<div></div>
+<br><br><br><br><br><br><br><br><br>
+<div id="a"></div>
+</div>
 <div class="chat">
 
 <input placeholder="Send Message" [(ngModel)]="formValue" (keyup.enter)="sendMessage()" type="text">
 
-<button (click)="sendMessage()">Send</button>
+<span (click)="sendMessage()"><i class="fas fa-paper-plane" style="color:#09203f; font-size: 20px"></i></span>
 </div>
 <!-- </div> -->
