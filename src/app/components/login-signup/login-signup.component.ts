@@ -11,6 +11,7 @@ import { ToastService } from "../../providers/toast.service";
 })
 export class LoginSignUpComponent{
     loginCheck : boolean = true;
+    
     message = '';
     loginForm = {
         username : '',
@@ -20,7 +21,7 @@ export class LoginSignUpComponent{
         name : '',
         password : '',
         email : '',
-        location : '',
+        location : {},
         phone : null
     }
     constructor( private lss : LoginSignUpService, private router : Router, private toast : ToastService){
@@ -51,12 +52,29 @@ export class LoginSignUpComponent{
         })
     }
 
+    
+       
+
     signUp(){
-        this.lss.signup(this.signUpForm).subscribe((res:any)=>{
+        
+        if(navigator.geolocation){
+      navigator.geolocation.getCurrentPosition((location) => {
+          this.signUpForm.location = {
+              type: "point",
+              coordinates: [
+              location.coords.longitude, location.coords.latitude]
+          }
+           this.lss.signup(this.signUpForm).subscribe((res:any)=>{
             console.log(res);
             this.toast.customToast(res.message);
         },(err:any)=>{
 
         })
+
+      }
+      );
+      };
+      // console.log(this.location);
+       
     }
 }
