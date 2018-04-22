@@ -5,40 +5,40 @@ h1{
 
 
 .from{
-	display:all;
-	position: relative;
-	
+	width:70%;
 	clear: both;
 	padding:15px;
 	overflow:auto;
         /*bottom:0;*/
         /*max-height: 400px;*/
         font-size: 20px;
-        border:2px solid grey;
+        /*border:2px solid grey;*/
         background-color: lightgrey;
 
 	}
 
 	.to{
-		overflow:auto;
+		
         /*bottom:0;*/
     	position: relative;
 	float:right;
+	width:70%;
 	padding:15px;
 	clear:both;
 	font-size: 20px;
-	border:2px solid blue;
+	/*border:2px solid blue;*/
         background-color: lightblue;
 	}
 
 	.chat{
 		width:100%;
-		position: absolute;
+		position: relative;
 		bottom:0 !important;
 	}
 
 	.chat input{
 		width:80%;
+		border-radius: 5px;
 	}
 
 	#botbtn{
@@ -53,4 +53,19 @@ h1{
 	}
 #header{
 	width:100%;
+}
+.message{
+	border-radius: 20px;
+	margin-bottom: 8px;
+}
+.chatmsg{
+	height:80%;
+	width:80%;
+	margin:auto;
+	overflow-y: scroll;
+}
+
+#a{
+	width:10px;
+	height:10px;
 }
