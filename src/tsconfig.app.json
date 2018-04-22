@@ -18,6 +18,7 @@
     "./app/components/login-signup/*.ts",
     "./app/components/profile/*.ts",
     "./app/components/sidebar/*.ts",
+    "./app/components/category/*.ts",
     "./*.ts"],
   "exclude": [
     "test.ts",

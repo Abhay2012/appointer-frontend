@@ -1,12 +1,13 @@
 import { Component } from "@angular/core";
 import { LoginSignUpService } from "../../providers/login.service";
 import { Router } from "@angular/router";
+import { ToastService } from "../../providers/toast.service";
 
 @Component({
     selector : 'login-signup',
     templateUrl : 'login-signup.component.html',
     styleUrls : [ 'login-signup.component.css' ],
-    providers : [ LoginSignUpService ]
+    providers : [ LoginSignUpService,ToastService ]
 })
 export class LoginSignUpComponent{
     loginCheck : boolean = true;
@@ -19,11 +20,10 @@ export class LoginSignUpComponent{
         name : '',
         password : '',
         email : '',
-        phone : null,
-        confirmPassword : ''
+        phone : null
     }
-    constructor( private lss : LoginSignUpService, private router : Router){
-
+    constructor( private lss : LoginSignUpService, private router : Router, private toast : ToastService){
+    
     }
 
     login(){
@@ -35,22 +35,25 @@ export class LoginSignUpComponent{
         delete this.loginForm.username;
         this.lss.login(this.loginForm).subscribe((res:any)=>{
             console.log(res);
-            this.message = res.message;
+            this.toast.customToast('Login Successful!');
             localStorage.setItem('id',res.data._id);
             localStorage.setItem('appointer-token',res.token);
             localStorage.setItem('name',res.data.name);
             localStorage.setItem('email',res.data.email);
             localStorage.setItem('phone',res.data.phone);
-            this.router.navigate(['profile']);
+            res.data.services = res.data.services.map((service)=>JSON.stringify(service));
+            localStorage.setItem('services',JSON.stringify(res.data.services));
+            localStorage.setItem('profile_pic',res.data.profile_pic);
+            this.router.navigate(['profile',res.data._id]);
         },(err:any)=>{
-
+            this.toast.customToast('Invalid Credentials!');
         })
     }
 
     signUp(){
         this.lss.signup(this.signUpForm).subscribe((res:any)=>{
             console.log(res);
-            this.message = res.message;
+            this.toast.customToast(res.message);
         },(err:any)=>{
 
         })

@@ -1,6 +1,7 @@
 import { Component, Input } from "@angular/core";
 import { Router } from "@angular/router";
 import { CategoriesList } from "../../modals/lists";
+import { ToastService } from "../../providers/toast.service";
 
 @Component({
     selector : 'side-bar',
@@ -13,44 +14,8 @@ export class SideBarComponent{
 
     local : any;
     showSublist : Boolean = false;
-    subList : CategoriesList[]=[
-        {
-            title : 'Tutors',
-            icon : 'fas fa-user',
-            route : '/'
-        },
-        {
-            title : 'Grocery Shops',
-            icon : 'fas fa-shopping-cart',
-            route : '/'
-        },
-        {
-            title : 'Plumbers',
-            icon : 'fas fa-user',
-            route : '/'
-        },
-        {
-            title : 'Show All',
-            icon : 'fas fa-user',
-            route : '/'
-        },
-        {
-            title : 'Grocery Shops',
-            icon : 'fas fa-shopping-cart',
-            route : '/'
-        },
-        {
-            title : 'Plumbers',
-            icon : 'fas fa-user',
-            route : '/'
-        },
-        {
-            title : 'Show All',
-            icon : 'fas fa-user',
-            route : '/'
-        }
-    ];
-    constructor(private router : Router){
+    subList : CategoriesList[]=[];
+    constructor(private router : Router, private toast : ToastService){
         this.local = localStorage;
     }
     
@@ -69,12 +34,13 @@ export class SideBarComponent{
         if(!localStorage.getItem('appointer-token')){
             this.router.navigate(['login'])
         }else{
-            this.router.navigate(['profile'])
+            this.router.navigate(['profile',localStorage.getItem('id')])
         }
     }
 
     logout(){
         localStorage.clear();
+        this.toast.customToast("You're Logged Out Successfully");
         this.router.navigate(['/']);
     }
     

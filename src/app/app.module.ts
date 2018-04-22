@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 import { SideBarModule } from "./components/sidebar/sidebar.module";
+import { ToastService } from './providers/toast.service';
+import { ToastOptions } from 'ng2-toastr/ng2-toastr';
+import { ToastModule } from 'ng2-toastr/ng2-toastr';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -11,9 +15,20 @@ export class MyHammerConfig extends HammerGestureConfig {
   }
 }
 
+/* Custom property for toast message */
+export class CustomOption extends ToastOptions {
+  animate = 'flyRight';
+  newestOnTop = true;
+  showCloseButton = true;
+  positionClass = 'toast-bottom-center';
+  toastLife: 300000;
+}
+
 @NgModule({
   imports: [BrowserModule,
     SideBarModule,
+    BrowserAnimationsModule,
+    ToastModule.forRoot(),
     RouterModule.forRoot([
       {
         path: "",
@@ -25,7 +40,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         loadChildren: 'app/components/login-signup/login-signup.module#LoginSignUpModule'
       },
       {
-        path: "profile",
+        path: "profile/:id",
         loadChildren: 'app/components/profile/profile.module#ProfileModule'
       },
       {
@@ -43,14 +58,20 @@ export class MyHammerConfig extends HammerGestureConfig {
       {
         path : "chat",
         loadChildren : 'app/components/chat/chat.module#ChatModule'
-      }
-
-      
+      },
+      {
+        path : "category/:type",
+        loadChildren : 'app/components/category/category.module#CategoryModule'
+      }      
     ])
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],
-  providers: [{
+  providers: [
+    ToastService,
+    { provide: ToastOptions, 
+      useClass: CustomOption },
+    {
     provide: HAMMER_GESTURE_CONFIG,
     useClass: MyHammerConfig
   }] // use our custom hammerjs config

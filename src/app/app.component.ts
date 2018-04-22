@@ -1,5 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from "@angular/router";
+import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 @Component({
     // moduleId: module.id,
@@ -12,11 +13,15 @@ export class AppComponent {
   open: any;
   @ViewChild('sideBar') sideBar;
      
-  constructor(private router : Router){}  
+  constructor(private router : Router,
+    public toastr: ToastsManager,
+    private vcr: ViewContainerRef){
+    this.toastr.setRootViewContainerRef(vcr);
+  } 
+
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
-    swipe(action) {
-        console.log(this.open);
-        console.log("cdscsd");
+    
+  swipe(action) {
         if (action === this.SWIPE_ACTION.RIGHT) {
             this.open = true;
             this.sideBar.open = true;

@@ -3,10 +3,18 @@ import { MessagingComponent } from './messaging.component';
 import { RouterModule } from "@angular/router";
 import { ChatComponent } from "./chat/chat.component";
 import { Urls } from "../../configs/urls";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { HttpClientModule } from "@angular/common/http";
+import { CustomHttpService } from "../../providers/customHttp.service";
 
 @NgModule({
     declarations : [ MessagingComponent,ChatComponent ],
-    imports : [ RouterModule.forChild([
+    imports : [ 
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        RouterModule.forChild([
         {
             path : '',
             component : MessagingComponent
@@ -16,7 +24,7 @@ import { Urls } from "../../configs/urls";
             component : ChatComponent
         }
     ]) ],
-    providers : [Urls]
+    providers : [Urls,CustomHttpService]
 })
 export class MessagingModule{
 
