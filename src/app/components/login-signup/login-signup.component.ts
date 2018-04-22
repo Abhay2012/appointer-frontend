@@ -20,6 +20,7 @@ export class LoginSignUpComponent{
         name : '',
         password : '',
         email : '',
+        location : '',
         phone : null
     }
     constructor( private lss : LoginSignUpService, private router : Router, private toast : ToastService){
