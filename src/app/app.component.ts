@@ -1,13 +1,14 @@
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { Router } from "@angular/router";
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
-
+import { LoaderService } from "./providers/loader.service";
+ 
 @Component({
     // moduleId: module.id,
     selector: 'app-root',
     templateUrl: 'app.component.html',
-    styleUrls: ['app.component.css']
-    // providers : [ Router ]
+    styleUrls: ['app.component.css'],
+    providers : [ LoaderService ]
 })
 export class AppComponent {
   open: any;
@@ -15,8 +16,12 @@ export class AppComponent {
      
   constructor(private router : Router,
     public toastr: ToastsManager,
+    public ls : LoaderService,
     private vcr: ViewContainerRef){
     this.toastr.setRootViewContainerRef(vcr);
+    this.router.events.subscribe(()=>{
+        this.ls.Loader = true;
+    })
   } 
 
   SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };

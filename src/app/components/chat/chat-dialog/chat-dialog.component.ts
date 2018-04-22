@@ -1,7 +1,8 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ChatService, Message} from '../chat.service';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/scan';
+import { LoaderService } from "../../../providers/loader.service";
 
 @Component({
   selector: 'chat-dialog',
@@ -15,11 +16,14 @@ export class ChatDialogComponent implements OnInit {
 	messages: Observable<Message[]>;
 	formValue: string;
 
-  constructor(public chat: ChatService, cd:ChangeDetectorRef) { 
-    setInterval(() => { cd.detectChanges();  }, 1);
+  constructor(public chat: ChatService, private ls : LoaderService) { 
+  
   }
 
   ngOnInit() {
+    setTimeout(()=>{
+      this.ls.Loader = false;
+    })
   	this.messages = this.chat.conversation.asObservable()
   		.scan((acc, val) => acc.concat(val)); 
 

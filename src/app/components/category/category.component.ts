@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from "@angular/router";
 import { ServicesService } from "../../providers/services.service";
+import { LoaderService } from "../../providers/loader.service";
 
 @Component({
   selector: 'category',
@@ -12,22 +13,27 @@ export class CategoryComponent implements OnInit {
 
   type: string;
   serviceProviders;
-  stars = ["","","","",""]
-  constructor(private ac: ActivatedRoute, private router : Router, private ss: ServicesService) {
+  stars = ["","","","",""];
+  isLoader = true;
+  constructor(private ac: ActivatedRoute, private router : Router, public ls : LoaderService, private ss: ServicesService) {
 
   }
 
   ngOnInit() {
     this.ac.params.subscribe((params) => {
+      this.serviceProviders = [];
       this.type = params.type;
+      
+      this.getUsers();
     })
-    this.getUsers();
   }
 
   getUsers() {
     this.ss.getUsers(this.type).subscribe((res: any) => {
+      this.ls.Loader = false;
       this.serviceProviders = res.data;
       this.serviceProviders = this.serviceProviders.map((sp) => {
+        
         if (sp.services[0].ratings.length > 0) {
           sp.rating = sp.services[0].ratings.reduce((sum, value) => {
             return sum + value;
@@ -37,7 +43,7 @@ export class CategoryComponent implements OnInit {
       })
       console.log(this.serviceProviders);
     }, (err: any) => {
-
+      this.ls.Loader = false;
     })
   }
 

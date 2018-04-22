@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ChatMessage } from "../../../modals/lists";
 import { ChatService } from "../../../providers/chat.service";
 import { ToastService } from "../../../providers/toast.service";
+import { LoaderService } from "../../../providers/loader.service";
 
 @Component({
     selector: 'message-chat',
@@ -21,14 +22,18 @@ export class ChatComponent implements OnInit {
     local;
     pgNo : number = 1;
 
-    constructor(private urls: Urls, private ar: ActivatedRoute, private cs: ChatService,private toast : ToastService) {
+    constructor(private urls: Urls, private ar: ActivatedRoute, private ls:LoaderService, private cs: ChatService,private toast : ToastService) {
 
     }
 
     ngOnInit() {
+        
         this.local = localStorage;
         this.ar.params.subscribe((param) => {
             this.conversation_id = param.id;
+        })
+        setTimeout(()=>{
+            this.ls.Loader = false;
         })
         
         this.getMessages();

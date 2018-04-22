@@ -3,7 +3,7 @@
         <div style="padding:0px 12px 12px 12px;text-align:center;">
             <!-- <span style="color:white;vertical-align:super;font-size:20px">Appointer </span> -->
         </div>
-        <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" src="/assets/user-icon.jpg">
+        <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" [src]="local.profile_pic && local.profile_pic != '' ? local.profile_pic : '/assets/user-icon.jpg'">
         <span style="color:white;vertical-align: top;">{{local.name}}</span>
     </div>
     <div  (swiperight)="swipe('swiperight')" (swipeleft)="swipe('swipeleft')">
@@ -35,7 +35,7 @@
             </li>
             <span *ngIf="showSublist">
             <li class="sidebar-item inner" *ngFor="let sub of subList">
-                <a [routerLink]="sub.route">
+                <a [routerLink]="'category/'+sub.route">
                     <i [class]="sub.icon" style="color:#09203f"></i>
                     <span class="list-item-text"> {{sub.title}} </span>
                 </a>

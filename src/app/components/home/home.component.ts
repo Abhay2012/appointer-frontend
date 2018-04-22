@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { CategoriesList } from "../../modals/lists";
 import { ServicesService } from "../../providers/services.service";
+import { LoaderService } from "../../providers/loader.service";
 
 declare let $ :any;
 @Component({
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit{
 
     categories : CategoriesList[] = [];
 
-    constructor(private ss : ServicesService){
+    constructor(private ss : ServicesService, private ls : LoaderService){
 
     }
 
@@ -24,9 +25,11 @@ export class HomeComponent implements OnInit{
     getCategories(){
         this.ss.getCategories().subscribe((res:any)=>{
             this.categories = res.data;
+            this.ls.Loader = false;    
         },(err:any)=>{
-
+            this.ls.Loader = false;
         })
+        
     }
 
     SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };

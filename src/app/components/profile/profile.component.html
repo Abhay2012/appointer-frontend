@@ -1,5 +1,8 @@
 <div *ngIf="user && user._id" class="back">
     <br>
+    <span (click)="openModal('#picUpload')" style="float:right;margin-right:10px;">
+        <i style="color:white" class="fas fa-pencil-alt"></i>
+    </span>
     <div style="text-align:  center;">
         <img style="border-radius: 50%;height: 130px;width: 130px;" [src]=" user.profile_pic || '/assets/user-icon.jpg'">
     </div>
@@ -50,8 +53,8 @@
     <div *ngIf="user && user.services && user.services.length > 0">
         <div class="card border-light" *ngFor="let service of user.services;let s = index" style="margin:10px">
             <div class="card-header">{{service.service}}
-                <span style="float:right" *ngIf="!enableChat">
-                    <i style="color:red" (click)="removeService(service.service,s)" class="far fa-trash-alt"></i>
+                <span style="float:right" (click)="removeService(service.service,s)" *ngIf="!enableChat">
+                    <i style="color:red"  class="far fa-trash-alt"></i>
                 </span>
             </div>
 
@@ -69,7 +72,7 @@
                 <!-- <h5 class="card-title">Light card title</h5> -->
                 <p class="card-text">{{service.description}}</p>
             </div>
-            <div class="card-footer" style="text-align:center" (click)="getReviews(service.service)" >View Reviews</div>
+            <div class="card-footer" style="text-align:center" (click)="getReviews(service.service);ls.Loader=true;" >View Reviews</div>
         </div>
     </div>
 </div>
@@ -86,19 +89,19 @@
             </div>
             <div class="modal-body">
                 <form #addServiceForm="ngForm">
-                    <select class="form-control" name="service" ngModel id="">
+                    <select class="form-control" name="service" required ngModel id="">
                         <option selected="true" disabled="true" value="">Select Service</option>
-                        <option [value]="service" *ngFor="let service of services">
+                        <option [ngValue]="service" *ngFor="let service of services">
                             {{ service.title }}
                         </option>
                     </select>
                     <br>
-                    <textarea name="description" ngModel id="" class="form-control" placeholder="Describe Your Service Here"></textarea>
+                    <textarea name="description" ngModel id="" class="form-control" required placeholder="Describe Your Service Here"></textarea>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="addService(addServiceForm)">Save changes</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" [disabled]="addServiceForm.invalid" (click)="addService(addServiceForm)">Save changes</button>
             </div>
         </div>
     </div>
@@ -128,6 +131,28 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="picUpload" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Change Profile Pic</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form #profilePic="ngForm">
+          <input required type="file" class="form-control" (change)="onSelect($event)" name="file" ngModel>
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button"  class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" [disabled]="profilePic.invalid" data-dismiss="modal" (click)="setPic(profilePic)"> Save changes</button>
         </div>
       </div>
     </div>

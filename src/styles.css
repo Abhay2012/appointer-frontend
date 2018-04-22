@@ -17,3 +17,19 @@ body, html {
 .toast-title {
     color: #FFFFFF;
 }
+.loader {
+    border: 6px solid #d7e0f3; /* Light grey */
+    border-top: 6px solid  #224d86 ; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position : absolute;
+    top:48%;
+    left:45%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
