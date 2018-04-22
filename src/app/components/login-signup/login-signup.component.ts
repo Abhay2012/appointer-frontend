@@ -19,6 +19,7 @@ export class LoginSignUpComponent{
         name : '',
         password : '',
         email : '',
+        location : '',
         phone : null,
         confirmPassword : ''
     }
@@ -41,6 +42,7 @@ export class LoginSignUpComponent{
             localStorage.setItem('name',res.data.name);
             localStorage.setItem('email',res.data.email);
             localStorage.setItem('phone',res.data.phone);
+            localStorage.setItem('location',res.data.location);
             this.router.navigate(['profile']);
         },(err:any)=>{
 
