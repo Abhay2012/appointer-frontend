@@ -8,6 +8,8 @@ import { SideBarModule } from "./components/sidebar/sidebar.module";
 import { ToastService } from './providers/toast.service';
 import { ToastOptions } from 'ng2-toastr/ng2-toastr';
 import { ToastModule } from 'ng2-toastr/ng2-toastr';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -26,6 +28,9 @@ export class CustomOption extends ToastOptions {
 
 @NgModule({
   imports: [BrowserModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
     SideBarModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
@@ -62,6 +67,10 @@ export class CustomOption extends ToastOptions {
       {
         path : "category/:type",
         loadChildren : 'app/components/category/category.module#CategoryModule'
+      },
+      {
+        path : "privacy",
+        loadChildren : 'app/components/privacy/privacy.module#PrivacyModule'
       }      
     ])
   ],

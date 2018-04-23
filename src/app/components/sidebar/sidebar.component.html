@@ -6,8 +6,8 @@
         <img style="border-radius: 50%;height: 75px;width: 75px;" (click)="toProfile()" [src]="local.profile_pic && local.profile_pic != '' ? local.profile_pic : '/assets/user-icon.jpg'">
         <span style="color:white;vertical-align: top;">{{local.name}}</span>
     </div>
-    <div  (swiperight)="swipe('swiperight')" (swipeleft)="swipe('swipeleft')">
-        <ul class="list-group" (click)="open=false;" (swipeleft)="swipe('swipeleft')" style="background-color:white;overflow-y:auto">
+    <div  style="height:100%;overflow: auto;" (swiperight)="swipe('swiperight')"  (swipeleft)="swipe('swipeleft')">
+        <ul class="list-group" (click)="open=false;" (swipeleft)="swipe('swipeleft')" style="background-color:white;">
             <li class="sidebar-item">
                 <a routerLink="/">
                     <i class="fas fa-home" style="color:#09203f"></i>
@@ -40,7 +40,7 @@
                     <span class="list-item-text"> {{sub.title}} </span>
                 </a>
             </li>
-        </span>
+            </span>
 
             <li class="sidebar-item" style="bottom:0">
                 <a routerLink="/feedback">
@@ -49,7 +49,7 @@
                 </a>
             </li>
             <li class="sidebar-item">
-                <a routerLink="#">
+                <a routerLink="/privacy">
                     <i class="fas fa-question-circle" style="color:#09203f"></i>
                     <span class="list-item-text"> Privacy Policy </span>
                 </a>

@@ -19,6 +19,7 @@
     "./app/components/profile/*.ts",
     "./app/components/sidebar/*.ts",
     "./app/components/category/*.ts",
+    "./app/components/privacy/*.ts",
     "./*.ts"],
   "exclude": [
     "test.ts",
