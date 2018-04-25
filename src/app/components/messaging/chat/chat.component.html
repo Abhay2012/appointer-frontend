@@ -1,5 +1,5 @@
 <div style="height:100%">
-    <div id="chat-box" style="height:80%; overflow:auto;margin : 0px 10px 0px 10px">
+    <div id="chat-box" style="height:84%; overflow:auto;margin : 0px 10px 0px 10px">
         <div *ngFor="let message of messages">
             <div class="container" [class.mine]="message.from == local.id">
                 <p>
@@ -11,7 +11,7 @@
         </div>
     </div>
     <br>
-    <div style="bottom:0;width: 100%;position:absolute;height:15%" class="col-sm-12">
+    <div style="bottom:0;width: 100%;position:absolute;height:10%" class="col-sm-12">
         <br>
 
         <div class="input-group mb-3">
@@ -22,5 +22,4 @@
         </div>
 
     </div>
-
 </div>

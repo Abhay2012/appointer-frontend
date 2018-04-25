@@ -60,7 +60,7 @@
                     <span class="list-item-text"> Help </span>
                 </a>
             </li>
-            <li class="sidebar-item" >
+            <li class="sidebar-item" *ngIf="local.appointer-token" >
                 <a (click)="logout()">
                     <i class="fas fa-sign-out-alt" style="color:#09203f"></i>
                     <span class="list-item-text"> Logout</span>
