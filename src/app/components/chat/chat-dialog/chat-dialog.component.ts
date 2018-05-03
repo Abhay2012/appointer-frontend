@@ -10,8 +10,9 @@ import { LoaderService } from "../../../providers/loader.service";
   styleUrls: ['./chat-dialog.component.css']
 })
 export class ChatDialogComponent implements OnInit {
-
-  public now: Date = new Date();
+  public now = new Date();
+  
+  
 
 	messages: Observable<Message[]>;
 	formValue: string;
@@ -21,6 +22,11 @@ export class ChatDialogComponent implements OnInit {
   }
 
   ngOnInit() {
+
+    setInterval(function(){
+    this.now = new Date();
+  }, 60000);
+
     setTimeout(()=>{
       this.ls.Loader = false;
     })
