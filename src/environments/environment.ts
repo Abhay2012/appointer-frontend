@@ -7,6 +7,6 @@ export const environment = {
   production: false,
 
   dialogflow: {
-  	Chatagent: 'b5c3c35d57944d2cb887a8a78959718e'
+  	Chatagent: 'cc7c4b8004d9468bbd2bd1aa30ef9515'
   }
 };
