@@ -21,7 +21,7 @@ export class SideBarComponent implements OnInit, OnDestroy{
     subList : CategoriesList[]=[];
  
     constructor(private router : Router,private ss : ServicesService, private toast : ToastService, private ls :LoaderService){
-        
+        this.local = localStorage
     }
     
     SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
