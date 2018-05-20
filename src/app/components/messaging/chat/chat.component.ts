@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy } from "@angular/core";
 import * as io from "socket.io-client";
 import { Urls } from "../../../configs/urls";
 import { ActivatedRoute } from "@angular/router";
@@ -13,7 +13,7 @@ import { LoaderService } from "../../../providers/loader.service";
     styleUrls: ['chat.component.css'],
     providers: [ChatService,ToastService]
 })
-export class ChatComponent implements OnInit {
+export class ChatComponent implements OnInit,OnDestroy{
 
     private socket;
     conversation_id: string;
@@ -44,6 +44,7 @@ export class ChatComponent implements OnInit {
             if(this.conversation_id != 'new-conversation'){
             this.cs.getMessages(this.conversation_id, this.pgNo).subscribe((res: any) => {
                 this.messages = res.data.concat(this.messages);
+                this.messages.sort((a,b)=> a.timestamp - b.timestamp )
                 setTimeout(() => {
                     var objDiv = document.getElementById("chat-box");
                     objDiv.scrollTop = objDiv.scrollHeight;
@@ -55,18 +56,13 @@ export class ChatComponent implements OnInit {
 
     connectSocket() {
         this.socket = io.connect(this.urls.base_url);
-        let data;
-        if (this.conversation_id == 'new-conversation') {
-            data = [
-                JSON.parse(this.local['conversation_to']), 
-                { user_id: this.local.id, user_name: this.local.name, user_pic: this.local.profile_pic ? this.local.profile_pic : '' }]
-        } else {
-            data = {
-                conversation_id: this.conversation_id,
-                to: JSON.parse(this.local['conversation_to']).user_id,
-                from: this.local.id
-            }
-        }
+        let data = {
+            to: JSON.parse(this.local['conversation_to'])._id,
+            from: this.local.id            
+        };
+        if (this.conversation_id != 'new-conversation') {
+            data['conversation_id'] = this.conversation_id;
+        } 
         this.initiatChat(data);
     }
 
@@ -102,5 +98,9 @@ export class ChatComponent implements OnInit {
             var objDiv = document.getElementById("chat-box");
             objDiv.scrollTop = objDiv.scrollHeight;
         }, 0)
+    }
+
+    ngOnDestroy(){
+        this.socket.close();
     }
 }

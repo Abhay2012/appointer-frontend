@@ -4,7 +4,6 @@ import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { LoaderService } from "./providers/loader.service";
  
 @Component({
-    // moduleId: module.id,
     selector: 'app-root',
     templateUrl: 'app.component.html',
     styleUrls: ['app.component.css'],
@@ -41,7 +40,7 @@ export class AppComponent {
         if(!localStorage.getItem('appointer-token')){
             this.router.navigate(['login'])
         }else{
-            this.router.navigate(['profile'])
+            this.router.navigate(['profile',localStorage.getItem('id')])
         }
     }
 

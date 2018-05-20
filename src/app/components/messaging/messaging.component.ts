@@ -26,7 +26,7 @@ export class MessagingComponent implements OnInit{
             this.cs.getChats(localStorage.getItem('id')).subscribe((res:any)=>{
                 this.ls.Loader = false;
                 this.conversations = res.conversations.map(convo => {
-                    convo.users = convo.users.filter(user => user.user_id != this.local.id);
+                    convo.users = convo.users.filter(user => user._id != this.local.id);
                     return convo;
                 });
                 this.conversations = this.conversations.filter(convo => "latest" in convo);

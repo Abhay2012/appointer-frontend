@@ -1,6 +1,6 @@
 <div class="container">
   <side-bar [open]="open" #sideBar></side-bar>
-  <div  class="main-content">
+  <div  class="main-content" style="height:100%;overflow: auto">
     <div class="swipe-area" [class.swipe-area-open]="sideBar.open" (swipeleft)="swipe('swipeleft')" (swiperight)="swipe('swiperight')"></div>
     <div style="background:linear-gradient(to bottom , #09203f, #1d4a6d  )">
       <div style="z-index:2500">
@@ -18,9 +18,6 @@
     </div>
     <div class="content" style="height:100%;">
       <router-outlet> </router-outlet>
-      <!-- <chat-dialog></chat-dialog> -->
     </div>
   </div>
 </div>
-
-<!-- #3B2667, #8943bb -->

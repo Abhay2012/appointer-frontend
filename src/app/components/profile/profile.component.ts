@@ -110,8 +110,8 @@ export class ProfileComponent implements OnInit{
 
     toChat(){
         let to = {
-            user_id : this.user._id,
-            user_name : this.user.name,
+            _id : this.user._id,
+            name : this.user.name,
             profile_pic : this.user.profile_pic
         }
         this.ls.Loader = true;

@@ -33,12 +33,13 @@ export class CategoryComponent implements OnInit {
       this.ls.Loader = false;
       this.serviceProviders = res.data;
       this.serviceProviders = this.serviceProviders.map((sp) => {
-        
+        // console.log(sp);
         if (sp.services[0].ratings.length > 0) {
           sp.rating = sp.services[0].ratings.reduce((sum, value) => {
-            return sum + value;
-          });
+            return  sum + +value;
+          },0);
         }
+        console.log(sp);
         return sp;
       })
       console.log(this.serviceProviders);

@@ -24,13 +24,12 @@ export class SideBarComponent implements OnInit, OnDestroy{
         this.local = localStorage
     }
     
-    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight' };
+    SWIPE_ACTION = { LEFT: 'swipeleft', RIGHT: 'swiperight', TOP : 'top', BOTTOM : 'bottom' };
     swipe(action) {
-        console.log("from side bar");
         if (action === this.SWIPE_ACTION.RIGHT) {
             this.open = true;
         }
-        if (action === this.SWIPE_ACTION.LEFT) {
+        else if (action === this.SWIPE_ACTION.LEFT) {
           this.open = false;
         }
     }
@@ -43,7 +42,7 @@ export class SideBarComponent implements OnInit, OnDestroy{
         if(localStorage.getItem('appointer-token')){
             this.loggedIn = true;
         }
-        this.getServices();
+        // this.getServices();
     }
 
     getServices(){

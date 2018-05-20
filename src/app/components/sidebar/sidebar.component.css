@@ -47,7 +47,11 @@ span.list-item-text {
     padding-left: 15px;
 }
 
-
+.profile_pic{
+    border-radius: 50%;
+    height: 75px;
+    width: 75px; 
+}
 
 .main-content {
     width: 100%;
